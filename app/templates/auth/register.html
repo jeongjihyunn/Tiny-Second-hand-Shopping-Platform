@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}회원가입{% endblock %}
+{% block content %}
+<div class="card" style="max-width:420px;margin:0 auto;">
+  <h2>회원가입</h2>
+  <form class="stack" method="POST">
+    {{ form.hidden_tag() }}
+    <label>{{ form.username.label }}</label>
+    {{ form.username() }}
+    {% for e in form.username.errors %}<div class="errors">{{ e }}</div>{% endfor %}
+
+    <label>{{ form.password.label }}</label>
+    {{ form.password() }}
+    {% for e in form.password.errors %}<div class="errors">{{ e }}</div>{% endfor %}
+
+    <label>{{ form.confirm.label }}</label>
+    {{ form.confirm() }}
+    {% for e in form.confirm.errors %}<div class="errors">{{ e }}</div>{% endfor %}
+
+    {{ form.submit() }}
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ other.username }}님과의 채팅{% endblock %}
+{% block content %}
+<h2>{{ other.username }}님과의 1:1 채팅</h2>
+<div id="chat-app" data-room="{{ room }}">
+  <div id="chat-log" class="chat-log">
+    {% for m in history %}
+      <div class="chat-msg"><span class="who">{{ m.sender.username }}</span><span>{{ m.body }}</span></div>
+    {% endfor %}
+  </div>
+  <form id="chat-form">
+    <input type="text" id="chat-input" maxlength="1000" placeholder="메시지를 입력하세요" style="width:80%;padding:8px;">
+    <button type="submit">전송</button>
+  </form>
+</div>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

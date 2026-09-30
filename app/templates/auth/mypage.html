@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}마이페이지{% endblock %}
+{% block content %}
+<h2>마이페이지</h2>
+<div class="card">
+  <p>아이디: <strong>{{ current_user.username }}</strong></p>
+  <p>잔액: <strong>{{ "{:,}".format(current_user.balance) }}원</strong></p>
+</div>
+
+<div class="card">
+  <h3>소개글 수정</h3>
+  <form class="stack" method="POST">
+    {{ profile_form.hidden_tag() }}
+    {{ profile_form.bio() }}
+    {{ profile_form.submit_profile() }}
+  </form>
+</div>
+
+<div class="card">
+  <h3>비밀번호 변경</h3>
+  <form class="stack" method="POST">
+    {{ password_form.hidden_tag() }}
+    <label>{{ password_form.current_password.label }}</label>
+    {{ password_form.current_password() }}
+    <label>{{ password_form.new_password.label }}</label>
+    {{ password_form.new_password() }}
+    <label>{{ password_form.confirm.label }}</label>
+    {{ password_form.confirm() }}
+    {{ password_form.submit_password() }}
+  </form>
+</div>
+{% endblock %}

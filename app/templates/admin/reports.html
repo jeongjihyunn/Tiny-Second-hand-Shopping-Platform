@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}신고 관리{% endblock %}
+{% block content %}
+<h2>신고 관리 (미처리)</h2>
+<table>
+  <tr><th>ID</th><th>신고자</th><th>대상</th><th>사유</th><th>일시</th><th>관리</th></tr>
+  {% for r in reports %}
+  <tr>
+    <td>{{ r.id }}</td>
+    <td>{{ r.reporter.username }}</td>
+    <td>
+      {% if r.target_type.value == 'user' %}
+        회원#{{ r.target_id }}
+      {% else %}
+        상품#{{ r.target_id }}
+      {% endif %}
+    </td>
+    <td>{{ r.reason }}</td>
+    <td>{{ r.created_at.strftime("%Y-%m-%d %H:%M") }}</td>
+    <td>
+      <form method="POST" action="{{ url_for('admin.resolve_report', report_id=r.id) }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button type="submit">처리완료</button>
+      </form>
+    </td>
+  </tr>
+  {% else %}
+  <tr><td colspan="6">미처리 신고가 없습니다.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

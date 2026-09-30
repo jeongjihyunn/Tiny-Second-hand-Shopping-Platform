@@ -1,0 +1,13 @@
+Flask==3.0.3
+Flask-SQLAlchemy==3.1.1
+Flask-Login==0.6.3
+Flask-WTF==1.2.1
+Flask-SocketIO==5.3.6
+Flask-Limiter==3.8.0
+python-dotenv==1.0.1
+email-validator==2.2.0
+bleach==6.1.0
+pytest==8.3.2
+
+# Optional, for production-grade concurrent websocket handling:
+# pip install eventlet   (then pass async_mode="eventlet" if desired)

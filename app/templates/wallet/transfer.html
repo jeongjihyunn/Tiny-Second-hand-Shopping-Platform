@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}송금{% endblock %}
+{% block content %}
+<h2>송금</h2>
+<p>내 잔액: <strong>{{ "{:,}".format(current_user.balance) }}원</strong></p>
+<form class="stack card" method="POST">
+  {{ form.hidden_tag() }}
+  <label>{{ form.to_username.label }}</label>
+  {{ form.to_username() }}
+  <label>{{ form.amount.label }}</label>
+  {{ form.amount() }}
+  <label>{{ form.memo.label }}</label>
+  {{ form.memo() }}
+  {{ form.submit() }}
+</form>
+{% endblock %}

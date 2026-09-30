@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+.env
+instance/
+instance_smoke/
+*.sqlite3
+*.db
+*.db-journal
+app/static/uploads/*
+!app/static/uploads/.gitkeep
+.pytest_cache/
+*.egg-info/
+.DS_Store

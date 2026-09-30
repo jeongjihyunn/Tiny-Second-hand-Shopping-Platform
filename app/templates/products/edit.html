@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}상품수정{% endblock %}
+{% block content %}
+<h2>상품 수정</h2>
+<form class="stack card" method="POST" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+  <label>{{ form.title.label }}</label>
+  {{ form.title() }}
+  <label>{{ form.description.label }}</label>
+  {{ form.description(rows=6) }}
+  <label>{{ form.price.label }}</label>
+  {{ form.price() }}
+  <label>{{ form.image.label }}</label>
+  {{ form.image() }}
+  {{ form.submit() }}
+</form>
+{% endblock %}

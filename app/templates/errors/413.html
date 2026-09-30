@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}오류 413{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>413</h2>
+  <p>업로드 용량이 너무 큽니다. (최대 4MB)</p>
+  <a href="{{ url_for('products.index') }}">홈으로</a>
+</div>
+{% endblock %}

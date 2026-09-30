@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}상품목록{% endblock %}
+{% block content %}
+<h2>상품목록</h2>
+<form method="GET" style="margin-bottom:16px;">
+  <input type="text" name="q" value="{{ q }}" placeholder="상품명 검색" style="padding:8px;width:240px;">
+  <button type="submit">검색</button>
+</form>
+
+<div class="product-grid">
+  {% for p in products %}
+  <a class="product-card card" href="{{ url_for('products.detail', product_id=p.id) }}">
+    {% if p.image_filename %}
+      <img src="{{ url_for('static', filename='uploads/' ~ p.image_filename) }}" alt="">
+    {% else %}
+      <div style="height:140px;background:#eee;border-radius:6px;"></div>
+    {% endif %}
+    <p><strong>{{ p.title }}</strong></p>
+    <p>{{ "{:,}".format(p.price) }}원</p>
+  </a>
+  {% else %}
+  <p>등록된 상품이 없습니다.</p>
+  {% endfor %}
+</div>
+{% endblock %}

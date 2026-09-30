@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}신고하기{% endblock %}
+{% block content %}
+<h2>{{ target_label }} 신고</h2>
+<form class="stack card" method="POST">
+  {{ form.hidden_tag() }}
+  <label>{{ form.reason.label }}</label>
+  {{ form.reason(rows=4) }}
+  {% for e in form.reason.errors %}<div class="errors">{{ e }}</div>{% endfor %}
+  {{ form.submit() }}
+</form>
+{% endblock %}

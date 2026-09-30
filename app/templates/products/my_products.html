@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}내 상품{% endblock %}
+{% block content %}
+<h2>내 상품</h2>
+<div class="product-grid">
+  {% for p in products %}
+  <a class="product-card card" href="{{ url_for('products.detail', product_id=p.id) }}">
+    <p><strong>{{ p.title }}</strong> <span class="badge badge-{{ p.status.value }}">{{ p.status.value }}</span></p>
+    <p>{{ "{:,}".format(p.price) }}원</p>
+  </a>
+  {% else %}
+  <p>등록한 상품이 없습니다.</p>
+  {% endfor %}
+</div>
+{% endblock %}
